@@ -9,7 +9,7 @@
 ```console
 serveur@serveur:~$ man which
 ```
-Cette commande permet d'afficher des informations sur la commande ___which___ dont un synopsis, une descriptionet ses options.  
+Cette commande permet d'afficher des informations sur la commande ___which___ dont un synopsis, une description et ses options.  
 
 #### 2. Quand on consulte cette page, comment peut-on rechercher, par exemple, le mot option ?
 
@@ -63,20 +63,18 @@ Nous ne pouvons pas accéder à ce dossier car nous n'avons pas les permissions 
 
 #### 6. essayez la commande sudo cd /root ; que se passe-t-il ? Expliquez
 
-Lorsque nous exécutons cette commande, le mot de passe de l'utilisateur administrateur est demandé, car il s'agit du seul utilisateur capable d'accéder à ce fichier.  
-/*je sais pas*/
+Lorsque nous exécutons cette commande, le mot de passe de l'utilisateur administrateur est demandé pour pouvoir passer en mode ___Super Utilisateur___.  
+Une fois le mot de passe entré, une erreur s'affiche indiquant que  la commande ___cd___ n'existe pas.
+En effet, ___sudo___ et ___cd___ sont deux programmes appartenant au shell, ainsi le programme ___sudo___ ne peut pas utiliser le programme ___cd___.
+Il faut utiliser ___sudo -s___ pour pouvoir ensuite utiliser la commande ___cd___ en tant que Super Utilisateur.
 
 #### 7. à partir de votre dossier personnel, créez l’arborescence suivante :
 
 
 ```console
-serveur@serveur:~$ cd - mkdir Dossier1
-serveur@serveur:~$ cd - mkdir Dossier2
-serveur@serveur:~$ cd - mkdir Dossier2/Dossier2.1
-serveur@serveur:~$ cd - mkdir Dossier2/Dossier2.2
-serveur@serveur:~$ cd - touch Dossier1/Fichier1
-serveur@serveur:~$ cd - touch Dossier2/Dossier2.2/Fichier2cd 
-serveur@serveur:~$ cd - touch Dossier2/Dossier2.2/Fichier3
+serveur@serveur:~$ cd - mkdir Dossier1 Dossier2
+serveur@serveur:~$ cd - mkdir Dossier2/Dossier2.1 Dossier2/Dossier2.2
+serveur@serveur:~$ cd - touch Dossier1/Fichier1 Dossier2/Dossier2.2/Fichier2 Dossier2/Dossier2.2/Fichier3
 ```
 
 #### 8. revenez dans votre dossier personnel ; à l’aide de la commande rm, essayez de supprimer Fichier1, puis Dossier1 ; que se passe-t-il ?
@@ -110,17 +108,18 @@ l'option ___-r___ permet de supprimer le dossier et son contenu de manière réc
 
 ### Commandes importantes
 
-#### 1. Quelle commande permet d’afficher l’heure ? A quoi sert la commande time ?
+#### 1. Quelle commande permet d’afficher l’heure ? A quoi sert la commande ___time___ ?
 
 ```console
-serveur@serveur:~$ date
+serveur@serveur:~$ date +%H:%M:%S
 ```
+La commande ___time___ permet de déterminer le temps d'exécution d'une commande passée en paramètre.
 
-#### 2. Dans votre dossier personnel, tapez successivement les commandes ls puis la ; que peut-on en déduire sur les fichiers commençant par un point ?
+#### 2. Dans votre dossier personnel, tapez successivement les commandes ___ls___ puis ___la___ ; que peut-on en déduire sur les fichiers commençant par un point ?
 
 les fichiers commençant par un point sont des fichiers cachés.
 
-#### 3. Où se situe le programme ls ?
+#### 3. Où se situe le programme ___ls___ ?
 
 ```console
 serveur@serveur:~$ which ls
@@ -129,12 +128,12 @@ serveur@serveur:~$
 ```
 Donc, le programme ls se trouve dans le dossier ___/usr/bin/___.
 
-#### 4. Que fait la commande ll ? (indice : la commande alias peut vous aider)
+#### 4. Que fait la commande ___ll___ ? (indice : la commande alias peut vous aider)
 
 ll reviens à taper la commande suivant :
 
 ```console
-serveur@serveur:~$ which ls -alF
+serveur@serveur:~$ ls -alF
 ```
 L'option -a permet d'afficher tous les fichiers, même les fichiers commançant par un point.
 L'option -l permet d'afficher une longue liste des fichiers avec des informations détaillées sur chaque fichier.
@@ -146,15 +145,15 @@ L'option -F permet d'ajouter des indicateurs aux entrées.
 serveur@serveur:~$ which ls -a /bin
 ```
 
-#### 6. Que fait la commande ls .. ?
+#### 6. Que fait la commande ___ls___ .. ?
 
 Cette commande permet d'afficher les dossiers et les fichiers du dossier parent.
 
 #### 7. Quelle commande donne le chemin complet du dossier courant ?
 
-/*je sais pas*/
+Je n'ai pas compris la question.
 
-#### 8. Que fait la commande echo 'yo' > plop exécutée 2 fois ?
+#### 8. Que fait la commande ___echo 'yo' > plop___ exécutée 2 fois ?
 
 ```console
 serveur@serveur:~$ echo 'yo' > plop
@@ -166,7 +165,7 @@ serveur@serveur:~$ echo 'yo' > plop
 ```
 A cet instant, le fichier ___plop___ a pour contenu ___yo___. Le contenu précédent est écrasé.
 
-#### 9. Que fait la commande echo 'yo' >> plop exécutée 2 fois ?
+#### 9. Que fait la commande ___echo 'yo' >> plop___ exécutée 2 fois ?
 
 ```console
 serveur@serveur:~$ rm plop
@@ -183,36 +182,36 @@ yo
 
 Ajouter ___>>___ permet donc de concater le contenant d'un fichier avec le nouveau contenu. Dans ce cas, c'est la sortie de la comande ___echo yo___.
 
-#### 10. A quoi sert la commande file ? Essayez la sur des fichiers de types différents.
+#### 10. A quoi sert la commande ___file___ ? Essayez la sur des fichiers de types différents.
 
 La commande ___file___ détermine le type d'un ou plusieurs fichiers selon leur contenu.
 
-#### 11. Créez un fichier toto qui contient la chaîne Hello Toto ! ; créer ensuite un lien titi vers ce fichier avec la commande ln toto titi. Modifiez à présent le contenu de toto et affichez le contenu de titi : qu’observe-t-on ? Supprimez le fichier toto ; quelle conséquence cela a-t-il sur titi ?
+#### 11. Créez un fichier ___toto___ qui contient la chaîne ___Hello Toto !___ ; créer ensuite un lien ___titi___ vers ce fichier avec la commande ___ln toto titi___. Modifiez à présent le contenu de toto et affichez le contenu de ___titi___ : qu’observe-t-on ? Supprimez le fichier ___toto___ ; quelle conséquence cela a-t-il sur ___titi___?
 
-Nous retrouvons les changements effectués dans ___toto___ lorsque nous affichons le contenu de titi.
-Une fois le fichier toto supprimé, titi conserve le même contenu.
+Nous retrouvons les changements effectués dans ___toto___ lorsque nous affichons le contenu de ___titi___.
+Une fois le fichier ___toto___ supprimé, ___titi___ conserve le même contenu.
 
-#### 12. Créez à présent un lien symbolique tutu sur titi avec la commande ln -s titi tutu. Modifiez le contenu de titi ; quelle conséquence pour tutu ? Et inversement ? Supprimez le fichier titi ; quelle conséquence cela a-t-il sur tutu ?
+#### 12. Créez à présent un lien symbolique ___tutu___ sur ___titi___ avec la commande ___ln -s titi tutu___. Modifiez le contenu de ___titi___ ; quelle conséquence pour ___tutu___ ? Et inversement ? Supprimez le fichier ___titi___ ; quelle conséquence cela a-t-il sur ___tutu___ ?
 
-Lorsque nous modifions le contenu contenu de titi, le contenu de tutu change également. De même inversement.
-Une fois le fichier titi supprimé, il n'est plus possible d'afficher le contenu de tutu. Le message ___cat: tutu: No such file or directory___ apparait mais nous retrouvons encore tutu.
+Lorsque nous modifions le contenu contenu de ___titi___, le contenu de ___tutu___ change également. De même inversement.
+Une fois le fichier ___titi___ supprimé, il n'est plus possible d'afficher le contenu de tutu. Le message ___cat: tutu: No such file or directory___ apparait mais nous retrouvons encore ___tutu___.
 
-#### 13. Affichez à l’écran le fichier /var/log/syslog. Quels raccourcis clavier permettent d’interrompre et reprendre le défilement à l’écran ?
+#### 13. Affichez à l’écran le fichier ___/var/log/syslog___. Quels raccourcis clavier permettent d’interrompre et reprendre le défilement à l’écran ?
 
-CTRL + S: interrompt le défilement d’un résultat trop verbeux
-CTRL + Q: reprend le défilement
+___CTRL + S:___ interrompt le défilement d’un résultat trop verbeux
+___CTRL + Q:___ reprend le défilement
 
 #### 14. Affichez les 5 premières lignes du fichier /var/log/syslog, puis les 15 dernières, puis seulement les lignes 10 à 20.
 
-5 premières lignes :
+* 5 premières lignes :
 ```console
 serveur@serveur:~$ head -5 /var/log/syslog
 ```
-15 dernières lignes:
+* 15 dernières lignes:
 ```console
 serveur@serveur:~$ tail -15 /var/log/syslog
 ```
-10 à 20 lignes:
+* 10 à 20 lignes:
 ```console
 serveur@serveur:~$ head -20 /var/log/syslog | tail -n +10
 ```
