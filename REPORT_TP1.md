@@ -9,7 +9,7 @@
 ```console
 serveur@serveur:~$ man which
 ```
-Cette commande permet d'afficher le nom, un synopsis, une description, les options et bien d'autres informations sur la commande ___which___.  
+Cette commande permet d'afficher des informations sur la commande ___which___ dont un synopsis, une descriptionet ses options.  
 
 #### 2. Quand on consulte cette page, comment peut-on rechercher, par exemple, le mot option ?
 
@@ -25,7 +25,11 @@ il faut taper ___q___.
 
 #### 4. Chaque section du manuel a une première page, qui présente le contenu de la section. Afficher la première page de la section 6 ; de quoi parle cette section ?
 
-/*Je sais pas.*/
+
+```console
+serveur@serveur:~$ man 6 intro
+```
+La section 6 du manuel décrit les jeux et les petits programmes amusants disponibles sur le système.
 
 ### Navigation dans l’arborescence des fichiers
 
