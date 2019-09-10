@@ -216,42 +216,75 @@ Au lieu d'écrire un long message en entier, réduire le nombre de lignes affich
 
 ### 16. Affichez à l’écran le fichier /etc/passwd ; que contient-il ? Quelle commande permet d’afficher la page de manuel de ce fichier ?
 
+Le fichier /etc/passwd contient toutes les informations relatives aux utilisateurs (login, mots de passe, ...).
+Ce fichier possède un format spécial permettant de repérer chaque utilisateur, chacune de ses lignes possède le format suivant:
+```text
+nom_du_compte : mot_de_passe : numero_utilisateur : numero_de_groupe
+: commentaire : répertoire : programme_de_demarrage
+```
 ### 17. Affichez seulement la première colonne triée par ordre alphabétique inverse
+
+```console
+serveur@serveur:~$ cat /etc/passwd | cut -d: -f1 | sort
+```
 
 ### 18. Quelle commande nous donne le nombre d’utilisateurs ?
 
+```console
+serveur@serveur:~$ wc -l /etc/passwd
+```
 
 ### 19. Combien de pages de manuel comportent le mot-clé conversion dans leur description ?
 
+/*Je sais pas*/
 
-### 20. A l’aide de la commande find, rechercheztest   tous les fichiers se nommant passwd présents sur la machine
+### 20. A l’aide de la commande find, recherchez tous les fichiers se nommant passwd présents sur la machine
+
+```console
+serveur@serveur:~$ find / -name passwd
+```
 
 ### 21. Modifiez la commande précédente pour que la liste des fichiers trouvés soit enregistrée dans le fichier ~/list_passwd_files.txt et que les erreurs soient redirigées vers le fichier spécial /dev/null
+
+```console
+serveur@serveur:~$ find / -name passwd > lis_passwd_files.txt 2> /dev/null
+```
 
 ### 22. Dans votre dossier personnel, utilisez la commande grep pour chercher où est défini l’alias ll vu précédemment
 
 
+
 ### 23. Utilisez la commande locate pour trouver le fichier history.log
+
+```console
+serveur@serveur:~$ locate history.log
+/var/log/apt/history.log
+serveur@serveur:~$ 
+```
 
 ### 24. Créer un fichier dans votre dossier personnel puis utilisez locate pour le trouver. Apparaît-il ? Pourquoi ?
 
-### 
+En utilisant locate, nous ne retrouvons pas le fichier créé. 
+En effet, la commande ___locate___ ne cherche pas les fichiers dans l'arborescence des fichiers systèmes mais plutôt dans une base de données contenant tous les fichiers.
+Généralement, cette base de données est mise à jour à 3h du matin. Nous pouvons également la mettre à jour manuellement.
+```console
+serveur@serveur:~$ sudo updatedb
+```
+Après cela, nous retrouvons le fichier créé avec la commande ___locate___.
 
-### 
+## Exercice 4 : Personnalisation du shell
 
-### 
+## 3. Modification du fichier .bashrc
 
-### 
+L'invite de commande devient coloré, avec en vert le nom de l'utilisateur et le nom de la machine et en bleu foncé le répertoire courant.
 
-### 
+### 4. Modification de l’invite de commande pour qu’elle s’affiche sous la forme demandée
 
-### 
-
-### 
-
-
-
-
-
-
-
+Remplacer la ligne de code suivante:
+```bash
+PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$"
+```
+Par cette ligne:
+```bash
+PS1="${debian_chroot:+($debian_chroot)}\[\033[01;35m\][\A] \[\033[00m\]- \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$"
+```
