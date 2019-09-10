@@ -201,7 +201,7 @@ Une fois le fichier ___titi___ supprimé, il n'est plus possible d'afficher le c
 ___CTRL + S:___ interrompt le défilement d’un résultat trop verbeux
 ___CTRL + Q:___ reprend le défilement
 
-#### 14. Affichez les 5 premières lignes du fichier /var/log/syslog, puis les 15 dernières, puis seulement les lignes 10 à 20.
+#### 14. Affichez les 5 premières lignes du fichier ___/var/log/syslog___, puis les 15 dernières, puis seulement les lignes 10 à 20.
 
 * 5 premières lignes :
 ```console
@@ -215,13 +215,13 @@ serveur@serveur:~$ tail -15 /var/log/syslog
 ```console
 serveur@serveur:~$ head -20 /var/log/syslog | tail -n +10
 ```
-#### 15. Que fait la commande dmesg | less ?
+#### 15. Que fait la commande ___dmesg | less___ ?
 
-Au lieu d'écrire un long message en entier, réduire le nombre de lignes affichéesavec la possibilité de dérouler.
+Au lieu d'écrire un long message en entier, cette commande permet de réduire le nombre de lignes affichées avec la possibilité de dérouler.
 
-#### 16. Affichez à l’écran le fichier /etc/passwd ; que contient-il ? Quelle commande permet d’afficher la page de manuel de ce fichier ?
+#### 16. Affichez à l’écran le fichier ___/etc/passwd___ ; que contient-il ? Quelle commande permet d’afficher la page de manuel de ce fichier ?
 
-Le fichier /etc/passwd contient toutes les informations relatives aux utilisateurs (login, mots de passe, ...).
+Le fichier ___/etc/passwd___ contient toutes les informations relatives aux utilisateurs (login, mots de passe, ...).
 Ce fichier possède un format spécial permettant de repérer chaque utilisateur, chacune de ses lignes possède le format suivant:
 ```text
 nom_du_compte : mot_de_passe : numero_utilisateur : numero_de_groupe
@@ -239,27 +239,27 @@ serveur@serveur:~$ cat /etc/passwd | cut -d: -f1 | sort
 serveur@serveur:~$ wc -l /etc/passwd
 ```
 
-#### 19. Combien de pages de manuel comportent le mot-clé conversion dans leur description ?
+#### 19. Combien de pages de manuel comportent le mot-clé ___conversion___ dans leur description ?
 
 /*Je sais pas*/
 
-#### 20. A l’aide de la commande find, recherchez tous les fichiers se nommant passwd présents sur la machine
+#### 20. A l’aide de la commande ___find___, recherchez tous les fichiers se nommant ___passwd___ présents sur la machine
 
 ```console
 serveur@serveur:~$ find / -name passwd
 ```
 
-#### 21. Modifiez la commande précédente pour que la liste des fichiers trouvés soit enregistrée dans le fichier ~/list_passwd_files.txt et que les erreurs soient redirigées vers le fichier spécial /dev/null
+#### 21. Modifiez la commande précédente pour que la liste des fichiers trouvés soit enregistrée dans le fichier ___~/list_passwd_files.txt___ et que les erreurs soient redirigées vers le fichier spécial ___/dev/null___
 
 ```console
 serveur@serveur:~$ find / -name passwd > lis_passwd_files.txt 2> /dev/null
 ```
 
-#### 22. Dans votre dossier personnel, utilisez la commande grep pour chercher où est défini l’alias ll vu précédemment
+#### 22. Dans votre dossier personnel, utilisez la commande ___grep___ pour chercher où est défini l’alias ___ll___ vu précédemment
 
+/*Je sais pas*/
 
-
-#### 23. Utilisez la commande locate pour trouver le fichier history.log
+#### 23. Utilisez la commande ___locate___ pour trouver le fichier ___history.log___
 
 ```console
 serveur@serveur:~$ locate history.log
